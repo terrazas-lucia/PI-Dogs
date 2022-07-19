@@ -75,7 +75,6 @@ const createDog = async (req, res) => {
 
 const getTemperament = async (req, res) => {
     const temperament = await Temperament.findAll();
-    if(temperament.length === 0){
         let dogsTotal = await getApiInfo();
         let allDogsTemperament = dogsTotal.map(el => el.temperament);
         let arraySeparado= []
@@ -93,13 +92,7 @@ const getTemperament = async (req, res) => {
                 filtrados.push(a[i])
             }
         }
-        new Temperament({temperament: filtrados.temperament});
-        Temperament.findOrCreate({where: {name:temperament}});
-
         res.status(200).send(filtrados);
-    } else{
-        res.status(200).send(temperament);
-    }
 
 }
 
