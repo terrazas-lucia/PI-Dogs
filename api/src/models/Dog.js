@@ -24,6 +24,12 @@ module.exports = (sequelize) => {
     lifespan: {
       type: DataTypes.INTEGER,
       allowNull: false,
-    }
+    },
+    img: {
+      type: DataTypes.STRING(1000), //tienen mas de 250 caracteres
+      validate: {
+          isURL: true,
+      },
+  },
   });
 };

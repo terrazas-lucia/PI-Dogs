@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { filterCreated, getDogs, orderByName, orderByWeight } from './actions/actions';
+import { filterCreated, getDogs, orderByName, orderByWeight } from '../actions/actions';
 import Card from './Card';
 import Pagination from './Pagination';
 import SearchBar from './SearchBar';

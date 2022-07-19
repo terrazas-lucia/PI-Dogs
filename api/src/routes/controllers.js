@@ -64,9 +64,9 @@ const homeId = async (req, res) => {
 }
 
 const createDog = async (req, res) => {
-    const{name, weight, height, lifespan, temperament} = req.body;
+    const{name, weight, height, lifespan, temperament, img} = req.body;
     const [dogCreated] = await Dog.findOrCreate({ where: {
-        name: name, weight:weight, height:height, lifespan:lifespan }
+        name: name, weight:weight, height:height, lifespan:lifespan, img:img }
     });
     const temperamentInDb = await Temperament.findOne({where: {name: temperament}});
     dogCreated.add(temperamentInDb);
