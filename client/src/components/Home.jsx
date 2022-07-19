@@ -68,8 +68,8 @@ export default function Home(){
                         </select>
                         <h4>Peso:</h4>
                         <select onChange={e => handleFilterWeight(e)}>
-                            <option value='strongest'> Del más pesado al mas liviano </option>
-                            <option value='weakest'> Del más liviano al mas fuerte </option>
+                            <option value='grandote'> Del más pesado al mas liviano </option>
+                            <option value='chiquito'> Del más liviano al mas fuerte </option>
                         </select>
                     </div>
                 </div>

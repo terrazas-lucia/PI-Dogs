@@ -7,11 +7,9 @@ import { useEffect } from 'react';
 export default function Detail(props){
     const dispatch = useDispatch()
     const myDog = useSelector((state) => state.detail);
-    
 
     useEffect(() => {
         dispatch(getDetail(props.match.params.id));
-
         return() => dispatch(clearDogs());
     }, [dispatch]);
 
