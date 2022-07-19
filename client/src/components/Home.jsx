@@ -2,6 +2,10 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
+import { filterCreated, getDogs, orderByName, orderByWeight } from './actions/actions';
+import Card from './Card';
+import Pagination from './Pagination';
+import SearchBar from './SearchBar';
 
 
 export default function Home(){
@@ -11,8 +15,7 @@ export default function Home(){
     const dogsPerPage = 12;
     const indexOfLastDog= currentPage * dogsPerPage;
     const indexOfFirstDog = indexOfLastDog - dogsPerPage; 
-    const currentDog = allPokemons.slice(indexOfFirstDog, indexOfLastDog);
-    const [filterDog, setFilterDog] = useState(currentDog);
+    const currentDog = allDogs.slice(indexOfFirstDog, indexOfLastDog);
     const error = useSelector((state) => state.error);
 
     const pagination = (pageNumber) => {
@@ -32,8 +35,8 @@ export default function Home(){
             dispatch(orderByName(e.target.value));
     }
 
-    function handleFilterStrength(e){
-        dispatch(orderByStrength(e.target.value));
+    function handleFilterWeight(e){
+        dispatch(orderByWeight(e.target.value));
     }
     
     const handleOnClick = ()=> {
@@ -41,13 +44,13 @@ export default function Home(){
     }
 
     return(
-        <div className="home-box">
+        <div>
             <nav>
                 <div onClick={handleOnClick}><h1> Perreques! </h1></div>
                 <SearchBar/>
                 <Link to = '/dogs'><button class="button-create">Ingresa tu perreque!</button></Link>
                 </nav>
-                <div className="filter">
+                <div>
                     <h4>Filtrar por: </h4>
                     <div>
                         <select onChange={e => handleFilterByCreated(e)}>
@@ -64,18 +67,17 @@ export default function Home(){
                             
                         </select>
                         <h4>Peso:</h4>
-                        <select onChange={e => handleFilterStrength(e)}>
-                            <option value='strongest'> Del más fuerte al más debil </option>
-                            <option value='weakest'> Del más debil al más fuerte </option>
+                        <select onChange={e => handleFilterWeight(e)}>
+                            <option value='strongest'> Del más pesado al mas liviano </option>
+                            <option value='weakest'> Del más liviano al mas fuerte </option>
                         </select>
                     </div>
                 </div>
             {  error?.length ? <p> {error} </p> : 
             currentDog?.map((el, i) => { //se trae el estado global y pregunta si existe y lo mapea y se lo pasa a la card
-                console.log(el);
                 return(
 
-                    <Card key={i} id={el.id} name={el.name} img={el.img} types={el.types} />
+                    <Card key={i} id={el.id} name={el.name} img={el.img} temperament={el.temperament} />
                 )
             })}
             <Pagination dogsPerPage={ dogsPerPage } allDogs={ allDogs.length } pagination={ pagination }/>

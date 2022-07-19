@@ -88,7 +88,7 @@ const getTemperament = async (req, res) => {
             }
         });
         let filtrados = [];
-        for (let i = 0; i < tuki.length; i++) {
+        for (let i = 0; i < a.length; i++) {
             if (!filtrados.includes(a[i])) {
                 filtrados.push(a[i])
             }

@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDetail, clearDogs } from '../actions/index';
+import { clearDogs, getDetail } from './actions/actions'
 import { useEffect } from 'react';
-import './styles/Detail.css';
 
 export default function Detail(props){
     const dispatch = useDispatch()
@@ -13,16 +12,15 @@ export default function Detail(props){
     useEffect(() => {
         dispatch(getDetail(props.match.params.id));
 
-        return() => dispatch(clearPokemons());
+        return() => dispatch(clearDogs());
     }, [dispatch]);
-    
-    console.log("mydog detail", myDog)
+
     return(
-        <div className='detail-box'>
+        <div>
             {myDog.hasOwnProperty("id") ? 
             <div>
-                <h1>{myDogs.name}</h1>
-                <img src={myDogs.img} alt="dog" style={{width: "96px", height: "96px"}}/>
+                <h1>{myDog.name}</h1>
+                <img src={myDog.img} alt="dog" style={{width: "96px", height: "96px"}}/>
                
                 { myDog.temperament?.map((type, i) => {
                     return(
