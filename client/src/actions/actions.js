@@ -31,6 +31,13 @@ export function orderByWeight(payload){
     })
 }
 
+export function orderByTemperament(payload){
+    return({
+        type: 'ORDER_BY_TEMPERAMENT',
+        payload
+    })
+}
+
 export function getNameDogs(payload){
     return async function(dispatch){
       try {

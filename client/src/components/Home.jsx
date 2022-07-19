@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { filterCreated, getDogs, orderByName, orderByWeight } from '../actions/actions';
+import { filterCreated, getDogs, orderByName, orderByTemperament, orderByWeight } from '../actions/actions';
 import Card from './Card';
 import Pagination from './Pagination';
 import SearchBar from './SearchBar';
@@ -11,6 +11,7 @@ import SearchBar from './SearchBar';
 export default function Home(){
     const dispatch = useDispatch();
     const allDogs = useSelector((state) => state.dogs);
+    const temperament = useSelector ((state) => state.temperament);
     const [currentPage, setCurrentPage] = useState(1);
     const dogsPerPage = 8;
     const indexOfLastDog= currentPage * dogsPerPage;
@@ -38,6 +39,11 @@ export default function Home(){
     function handleFilterWeight(e){
         dispatch(orderByWeight(e.target.value));
     }
+
+    function handleFilterTemperament(e){
+        dispatch(orderByTemperament(e.target.value));
+       
+    }
     
     const handleOnClick = ()=> {
         dispatch(getDogs());
@@ -63,13 +69,18 @@ export default function Home(){
                         <h4>Orden alfabetico:</h4>
                         <select onChange={e => handleFilterAscDesc(e)}>
                             <option value='asc'> A - Z </option> 
-                            <option value='desc'> Z - A </option> 
-                            
+                            <option value='desc'> Z - A </option>    
                         </select>
                         <h4>Peso:</h4>
                         <select onChange={e => handleFilterWeight(e)}>
-                            <option value='grandote'> Del más pesado al mas liviano </option>
-                            <option value='chiquito'> Del más liviano al mas fuerte </option>
+                            <option value='heavy'> Del más pesado al mas liviano </option>
+                            <option value='light'> Del más liviano al mas fuerte </option>
+                        </select>
+                        <h4>Temperamento:</h4>
+                        <select onChange={e => handleFilterTemperament(e)}>
+                            {temperament.map((el)=>(
+                              <option value={el}>{el}</option>
+                           ))}  
                         </select>
                     </div>
                 </div>
@@ -77,7 +88,7 @@ export default function Home(){
             currentDog?.map((el, i) => { //se trae el estado global y pregunta si existe y lo mapea y se lo pasa a la card
                 return(
 
-                    <Card key={i} id={el.id} name={el.name} img={el.img} temperament={el.temperament} />
+                    <Card key={i} id={el.id} name={el.name} image={el.image} temperament={el.temperament} />
                 )
             })}
             <Pagination dogsPerPage={ dogsPerPage } allDogs={ allDogs.length } pagination={ pagination }/>

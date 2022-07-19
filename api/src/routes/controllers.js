@@ -64,9 +64,9 @@ const homeId = async (req, res) => {
 }
 
 const createDog = async (req, res) => {
-    const{name, weight, height, lifespan, temperament, img} = req.body;
+    const{name, weight, height, lifespan, temperament, image} = req.body;
     const [dogCreated] = await Dog.findOrCreate({ where: {
-        name: name, weight:weight, height:height, lifespan:lifespan, img:img }
+        name: name, weight:weight, height:height, lifespan:lifespan, image:image }
     });
     const temperamentInDb = await Temperament.findOne({where: {name: temperament}});
     dogCreated.add(temperamentInDb);
@@ -74,7 +74,8 @@ const createDog = async (req, res) => {
 }
 
 const getTemperament = async (req, res) => {
-    const temperament = await Temperament.findAll();
+   /*  const temperamentDb = await Temperament.findAll();
+    if(temperamentDb.lenght === 0){ */
         let dogsTotal = await getApiInfo();
         let allDogsTemperament = dogsTotal.map(el => el.temperament);
         let arraySeparado= []
@@ -87,13 +88,15 @@ const getTemperament = async (req, res) => {
             }
         });
         let filtrados = [];
-        for (let i = 0; i < a.length; i++) {
-            if (!filtrados.includes(a[i])) {
-                filtrados.push(a[i])
+        for (let i = 0; i < arraySeparado.length; i++) {
+            if (!filtrados.includes(arraySeparado[i])) {
+                filtrados.push(arraySeparado[i])
             }
         }
         res.status(200).send(filtrados);
-
+   /*  } else{
+        res.status(200).send(temperamentDb);
+    }*/
 }
 
 module.exports = {

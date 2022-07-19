@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { postDog, getTemperament } from '../actions/actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 function validate(input){
     let errors = {};
@@ -44,6 +44,7 @@ function validate(input){
 }
 
 export default function CreateDog(){
+    const temperament = useSelector(state => state.temperament);
     const dispatch = useDispatch();
     const [errors, setErrors] = useState({});
     const [input, setInput] = useState({
@@ -67,11 +68,34 @@ export default function CreateDog(){
         }));
     }
 
+    function handleRangeWeight(e){ 
+        e.preventDefault();
+        setInput({
+          ...input,
+          weight: parseInt(e.target.value)
+        })
+      }
+
+      function handleRangeHeight(e){ 
+        e.preventDefault();
+        setInput({
+          ...input,
+          height: parseInt(e.target.value)
+        })
+      }
+
+      function handleRangeLifespan(e){ 
+        e.preventDefault();
+        setInput({
+          ...input,
+          lifespan: parseInt(e.target.value)
+        })
+      }
+
+
     function handleSelect(e){
         e.preventDefault();
-        if(input.type.length === 2){
-            return
-        } if (input.type.includes(e.target.value)){
+        if (input.temperament.includes(e.target.value)){
             return
         }
         setInput({
@@ -122,27 +146,34 @@ export default function CreateDog(){
                     </div>
                     <div>
                         <label>Peso:</label>
-                        <input type="range" value={input.weight} min="3" max="50" name="weight" required onChange={e => {handleChange(e)}}/>
+                        <input type="range" value={input.weight} min="3" max="50" placeholder="3" name="weight" required onChange={e => {handleRangeWeight(e)}}/>
                         {errors.weight && ( <p>{errors.weight}</p>)}
+                        <span>{input.weight}</span>
                     </div>
                     <div>
                         <label>Altura:</label>
-                        <input type="range" value={input.height} min="50" max="150" name="height" required onChange={e => {handleChange(e)}}/>
-                        {errors.weight && ( <p>{errors.weight}</p>)}
+                        <input type="range" value={input.height} min="50" max="150" placeholder="50" name="height" required onChange={e => {handleRangeHeight(e)}}/>
+                        {errors.height && ( <p>{errors.height}</p>)}
+                        <span>{input.height}</span>
                     </div>
                     <div>
                         <label>Años de vida:</label>
-                        <input type="range" value={input.lifespan} min="6" max="20" name="lifespan" required onChange={e => {handleChange(e)}}/>
-                        {errors.height && ( <p>{errors.height}</p>)}
+                        <input type="range" value={input.lifespan} min="6" max="20" placeholder="6" name="lifespan" required onChange={e => {handleRangeLifespan(e)}}/>
+                        {errors.lifespan && ( <p>{errors.lifespan}</p>)}
+                        <span>{input.lifespan}</span>
                     </div>
                     <div>
                         <label>Imagen:</label>
-                        <input type="url" value={input.image} name="img" required onChange={e => {handleChange(e)}}/>
+                        <input type="url" value={input.image} name="image" required onChange={e => {handleChange(e)}}/>
                         {errors.image && ( <p>{errors.image}</p>)}
                     </div>
-                    <label>Tipo:</label>
+                    <label>Caracteristicas:</label>
                     <select onChange={e => {handleSelect(e)}}>
-                        {input.temperament}
+                        {temperament.map((el) => {
+                            return(
+                                <option value={el}>{el}</option>
+                            )
+                        })}  
                     </select>
                     {errors.temperament && (<p>{errors.temperament}</p>)}
                     <button type='submit'>¡Crear!</button>

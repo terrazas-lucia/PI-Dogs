@@ -62,6 +62,16 @@ function rootReducer(state= initialState, action){
                 ...state,
                dogs:[...sortedArrStrength]
             }
+        case 'ORDER_BY_TEMPERAMENT':
+                const e = state.allDogs.filter(el => {
+                    if(!el.temperament) return undefined
+                    return el.temperament.includes(action.payload)
+                })
+                return{
+                    ...state,
+                    dogs:e
+                }
+            
         case 'GET_NAME':
             return{
                 ...state,
