@@ -12,7 +12,7 @@ export default function Home(){
     const dispatch = useDispatch();
     const allDogs = useSelector((state) => state.dogs);
     const [currentPage, setCurrentPage] = useState(1);
-    const dogsPerPage = 12;
+    const dogsPerPage = 8;
     const indexOfLastDog= currentPage * dogsPerPage;
     const indexOfFirstDog = indexOfLastDog - dogsPerPage; 
     const currentDog = allDogs.slice(indexOfFirstDog, indexOfLastDog);

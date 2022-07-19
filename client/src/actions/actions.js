@@ -57,7 +57,7 @@ export function getNameDogs(payload){
 
 export function getTemperament(){
     return async function(dispatch){
-        var json = await axios.get("http://localhost:3001/temperament",{});
+        var json = await axios.get("http://localhost:3001/temperaments",{});
     return dispatch({ 
         type: 'GET_TEMPERAMENT',
         payload: json.data

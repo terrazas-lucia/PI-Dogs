@@ -25,7 +25,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    img: {
+    image: {
       type: DataTypes.STRING(1000), //tienen mas de 250 caracteres
       validate: {
           isURL: true,
