@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { filterCreated, getDogs, orderByName, orderByTemperament, orderByWeight } from '../actions/actions';
+import { filterCreated, getDogs, getTemperament, orderByName, orderByTemperament, orderByWeight } from '../actions/actions';
 import Card from './Card';
 import Pagination from './Pagination';
 import SearchBar from './SearchBar';
@@ -28,22 +28,28 @@ export default function Home(){
         dispatch(getDogs()); //lo mismo que hacer mapdispatchtoprops 
     }, [dispatch])
 
+    useEffect(() => {
+        dispatch(getTemperament());
+    }, [dispatch])
+
     function handleSortedByCreated(e){
         e.preventDefault();
         dispatch(filterCreated(e.target.value));
     }
 
     function handleSortedAscDesc(e){
+        e.preventDefault();
         dispatch(orderByName(e.target.value));
     }
 
     function handleSortedWeight(e){
+        e.preventDefault();
         dispatch(orderByWeight(e.target.value));
     }
 
     function handleFilterTemperament(e){
+        e.preventDefault();
         dispatch(orderByTemperament(e.target.value));
-       
     }
     
     const handleOnClick = ()=> {
@@ -52,11 +58,10 @@ export default function Home(){
 
     return(
         <div className='homepage'>
-            <nav>
+            <nav className='homepage-navbar'>
                 <div onClick={handleOnClick}><h1> Perreques! </h1></div>
                 <SearchBar/>
                 <Link to = '/dogs'><button>Ingresa una raza nueva!</button></Link>
-                </nav>
                 <div>
                     <h4>Ordenar: </h4>
                     <div>
@@ -86,6 +91,7 @@ export default function Home(){
                         </select>
                     </div>
                 </div>
+            </nav>
             {  error?.length ? <p> {error} </p> : 
             currentDog?.map((el, i) => { //se trae el estado global y pregunta si existe y lo mapea y se lo pasa a la card
                 return(

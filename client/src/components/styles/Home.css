@@ -1,5 +1,17 @@
 .homepage{
-    background-image: url('https://i.imgur.com/bL0vgHK.jpg');
+    background-image: url('https://i.imgur.com/pVerVxJ.jpg');
     background-size: 30%;
 }
 
+.homepage h1{
+    padding: 10px;
+    cursor: pointer;
+}
+
+.homepage-navbar{
+    background-color:#fefaef;
+    display: inline-flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 100%;
+}
