@@ -11,7 +11,7 @@ export default function Detail(props){
     useEffect(() => {
         dispatch(getDetail(props.match.params.id));
         return() => dispatch(clearDogs());
-    }, [dispatch]);
+    }, [dispatch, props.match.params.id]);
 
     return(
         <div>
@@ -22,6 +22,7 @@ export default function Detail(props){
                 <h4>Nombre: {myDog.name}</h4>
                 <h4>Peso: {myDog.weight}</h4>
                 <h4>Altura: {myDog.height}</h4> 
+                <h4>Años de vida: {myDog.life_span}</h4>
                 <h4>Temperamento: {myDog.temperament}</h4>
 
             </div> : <p> loading :3 </p>} 

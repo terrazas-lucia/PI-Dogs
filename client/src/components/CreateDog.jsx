@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { postDog, getTemperament } from '../actions/actions';
 import { useDispatch, useSelector } from 'react-redux';
+ /* eslint-disable */
 
 function validate(input){
     let errors = {};
@@ -22,8 +23,8 @@ function validate(input){
         errors.height = 'Se requiere altura.';
     }
 
-    if(!input.lifespan){
-        errors.lifespan = 'Se requiere años de vida.';
+    if(!input.life_span){
+        errors.life_span = 'Se requiere años de vida.';
     } 
 
     if(!input.temperament){
@@ -51,7 +52,7 @@ export default function CreateDog(){
         name: "",
         weight: "",
         height: "",
-        lifespan:"",
+        life_span:"",
         temperament: [],
         image: ""
     })
@@ -88,7 +89,7 @@ export default function CreateDog(){
         e.preventDefault();
         setInput({
           ...input,
-          lifespan: parseInt(e.target.value)
+          life_span: parseInt(e.target.value)
         })
       }
 
@@ -112,12 +113,12 @@ export default function CreateDog(){
         } 
 
         dispatch(postDog(input));
-        alert("Perreque creado!");
+        alert("Perreque :)");
         setInput({
             name: "",
             weight: "",
             height: "",
-            lifespan:"",
+            life_span:"",
             temperament: [],
             image: ""
         })
@@ -136,7 +137,7 @@ export default function CreateDog(){
 
     return(
         <div>
-            <h1>Ingresa tu perreque!</h1>
+            <h1>Ingresa una nueva raza!</h1>
             <div>
                 <form onSubmit={e => handleSubmit(e)}>
                     <div>
@@ -158,9 +159,9 @@ export default function CreateDog(){
                     </div>
                     <div>
                         <label>Años de vida:</label>
-                        <input type="range" value={input.lifespan} min="6" max="20" placeholder="6" name="lifespan" required onChange={e => {handleRangeLifespan(e)}}/>
-                        {errors.lifespan && ( <p>{errors.lifespan}</p>)}
-                        <span>{input.lifespan}</span>
+                        <input type="range" value={input.life_span} min="6" max="20" placeholder="6" name="life_span" required onChange={e => {handleRangeLifespan(e)}}/>
+                        {errors.life_span && ( <p>{errors.life_span}</p>)}
+                        <span>{input.life_span}</span>
                     </div>
                     <div>
                         <label>Imagen:</label>

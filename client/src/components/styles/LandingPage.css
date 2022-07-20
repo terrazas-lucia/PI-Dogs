@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Elsie+Swash+Caps:wght@900&display=swap');
+
+body{
+    background-color: papayawhip;
+}
+
+.landing-page{
+    display:inline-flexbox;
+}
+
+.landing-page h1{
+    color: white;
+    text-shadow: 2px 2px 5px brown;
+    font-family: 'Elsie Swash Caps', cursive;
+}
+

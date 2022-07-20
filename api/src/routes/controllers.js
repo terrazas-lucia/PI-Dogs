@@ -64,18 +64,23 @@ const homeId = async (req, res) => {
 }
 
 const createDog = async (req, res) => {
-    const{name, weight, height, lifespan, temperament, image} = req.body;
-    const [dogCreated] = await Dog.findOrCreate({ where: {
-        name: name, weight:weight, height:height, lifespan:lifespan, image:image }
+    const{name, weight, height, life_span, temperament, image} = req.body;
+    const [dogCreated, created] = await Dog.findOrCreate({ where: {
+        name:name, weight:weight, height:height, life_span:life_span, image:image }
     });
-    const temperamentInDb = await Temperament.findOne({where: {name: temperament}});
-    dogCreated.add(temperamentInDb);
+    if(!created){
+        res.send({msg: "El perreque ya existe :)"}) 
+        return
+    }
+    const temperamentInDb = await Temperament.findAll({where: {name: temperament}});
+    dogCreated.addTemperament(temperamentInDb);
+    
     res.send({msg: "Perreque creado con exito :)"});
 }
 
 const getTemperament = async (req, res) => {
-   /*  const temperamentDb = await Temperament.findAll();
-    if(temperamentDb.lenght === 0){ */
+   const temperamentDb = await Temperament.findAll();
+    if(temperamentDb.length === 0){ 
         let dogsTotal = await getApiInfo();
         let allDogsTemperament = dogsTotal.map(el => el.temperament);
         let arraySeparado= []
@@ -93,10 +98,18 @@ const getTemperament = async (req, res) => {
                 filtrados.push(arraySeparado[i])
             }
         }
+        for(let f = 0; f < filtrados.length; f++){
+            await Temperament.findOrCreate({ where: {name:filtrados[f]}});
+        }
+
         res.status(200).send(filtrados);
-   /*  } else{
-        res.status(200).send(temperamentDb);
-    }*/
+    } else{
+        let nombres = [];
+        for(let i = 0; i<temperamentDb.length; i++){
+             nombres.push(temperamentDb[i].name);  
+        }
+        res.status(200).send(nombres);
+    }
 }
 
 module.exports = {

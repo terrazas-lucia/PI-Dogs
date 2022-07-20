@@ -6,6 +6,7 @@ import { filterCreated, getDogs, orderByName, orderByTemperament, orderByWeight 
 import Card from './Card';
 import Pagination from './Pagination';
 import SearchBar from './SearchBar';
+import './styles/Home.css'
 
 
 export default function Home(){
@@ -50,11 +51,11 @@ export default function Home(){
     }
 
     return(
-        <div>
+        <div className='homepage'>
             <nav>
                 <div onClick={handleOnClick}><h1> Perreques! </h1></div>
                 <SearchBar/>
-                <Link to = '/dogs'><button class="button-create">Ingresa tu perreque!</button></Link>
+                <Link to = '/dogs'><button>Ingresa una raza nueva!</button></Link>
                 </nav>
                 <div>
                     <h4>Ordenar: </h4>
@@ -67,18 +68,18 @@ export default function Home(){
                     </div>
                     <div>
                         <select onChange={e => handleSortedAscDesc(e)}>
-                        <option selected="selected" hidden="hidden">Alfabeticamente</option>
+                        <option defaultValue="selected" hidden="hidden">Alfabeticamente</option>
                             <option value='asc'> A - Z </option> 
                             <option value='desc'> Z - A </option>    
                         </select>
                        
                         <select onChange={e => handleSortedWeight(e)}>
-                        <option selected="selected" hidden="hidden">por Peso</option>
+                        <option defaultValue="selected" hidden="hidden">por Peso</option>
                             <option value='heavy'> Del más pesado al mas liviano </option>
                             <option value='light'> Del más liviano al mas fuerte </option>
                         </select>
                         <select onChange={e => handleFilterTemperament(e)}>
-                        <option selected="selected" hidden="hidden">Filtrar por temperamento</option>
+                        <option defaultValue="selected" hidden="hidden">Filtrar por temperamento</option>
                             {temperament.map((el)=>(
                               <option value={el}>{el}</option>
                            ))}  
@@ -88,8 +89,7 @@ export default function Home(){
             {  error?.length ? <p> {error} </p> : 
             currentDog?.map((el, i) => { //se trae el estado global y pregunta si existe y lo mapea y se lo pasa a la card
                 return(
-
-                    <Card key={i} id={el.id} name={el.name} image={el.image} temperament={el.temperament} />
+                    <Card key={i} id={el.id} name={el.name} weight={el.weight} temperament={el.temperament} image={el.image}/>
                 )
             })}
             <Pagination dogsPerPage={ dogsPerPage } allDogs={ allDogs.length } pagination={ pagination }/>
