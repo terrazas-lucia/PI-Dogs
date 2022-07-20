@@ -27,16 +27,16 @@ export default function Home(){
         dispatch(getDogs()); //lo mismo que hacer mapdispatchtoprops 
     }, [dispatch])
 
-    function handleFilterByCreated(e){
+    function handleSortedByCreated(e){
         e.preventDefault();
         dispatch(filterCreated(e.target.value));
     }
 
-    function handleFilterAscDesc(e){
-            dispatch(orderByName(e.target.value));
+    function handleSortedAscDesc(e){
+        dispatch(orderByName(e.target.value));
     }
 
-    function handleFilterWeight(e){
+    function handleSortedWeight(e){
         dispatch(orderByWeight(e.target.value));
     }
 
@@ -57,27 +57,28 @@ export default function Home(){
                 <Link to = '/dogs'><button class="button-create">Ingresa tu perreque!</button></Link>
                 </nav>
                 <div>
-                    <h4>Filtrar por: </h4>
+                    <h4>Ordenar: </h4>
                     <div>
-                        <select onChange={e => handleFilterByCreated(e)}>
+                        <select onChange={e => handleSortedByCreated(e)}>
                             <option value='all'>Todos los perreques</option>
                             <option value='created'>Creados por mi</option>
                             <option value='api'>Perreques ya existentes</option>
                         </select>
                     </div>
                     <div>
-                        <h4>Orden alfabetico:</h4>
-                        <select onChange={e => handleFilterAscDesc(e)}>
+                        <select onChange={e => handleSortedAscDesc(e)}>
+                        <option selected="selected" hidden="hidden">Alfabeticamente</option>
                             <option value='asc'> A - Z </option> 
                             <option value='desc'> Z - A </option>    
                         </select>
-                        <h4>Peso:</h4>
-                        <select onChange={e => handleFilterWeight(e)}>
+                       
+                        <select onChange={e => handleSortedWeight(e)}>
+                        <option selected="selected" hidden="hidden">por Peso</option>
                             <option value='heavy'> Del más pesado al mas liviano </option>
                             <option value='light'> Del más liviano al mas fuerte </option>
                         </select>
-                        <h4>Temperamento:</h4>
                         <select onChange={e => handleFilterTemperament(e)}>
+                        <option selected="selected" hidden="hidden">Filtrar por temperamento</option>
                             {temperament.map((el)=>(
                               <option value={el}>{el}</option>
                            ))}  
