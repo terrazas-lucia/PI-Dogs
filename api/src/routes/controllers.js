@@ -20,11 +20,13 @@ const getApiInfo = async() =>{
 
 const getDbInfo = async() => {
     return await Dog.findAll({
-        model: 'Temperament',
-        attributes: ['name'],
-        through: {
-            attributes: [],
-        }
+        include:[{
+            model: Temperament,
+            attributes: ['name'],
+            through: {
+                attributes: [],
+            },
+        }]
     });
 }
 
@@ -39,14 +41,14 @@ const homeRoute = async(req, res) => {
     const {name} = req.query;
     let dogsTotal = await getAllDogs();
     if(name){ //query
-        let dogName = dogsTotal.filter(el => el.name.toLowerCase() === name.toLowerCase());
+        let dogName = dogsTotal.filter(el => el.name.toLowerCase().includes(name.toLowerCase()));
         if(dogName?.length){
             return res.status(200).send(dogName);
         } 
-        let dogDb = await Dog.findOne({where: {name}});
+        let dogDb = await Dog.findOne({where: {name}})
         if(dogDb){
-            return res.status(200).json({...dogDb, temperament: dogDb.temperament});
-        }   
+            return res.status(200).send(dogDb);
+        } 
         return res.status(404).json({msg: "No se encontro el perreque :("});
     } else{
         res.status(200).send(dogsTotal);
@@ -59,7 +61,6 @@ const homeId = async (req, res) => {
     if(id){
         const dogId = dogsTotal.filter(el => el.id == id);
         dogId.length ? res.status(200).json(dogId) : res.status(404).send({msg: "No se encontro el perreque :("});
-
     }
 }
 

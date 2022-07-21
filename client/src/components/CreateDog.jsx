@@ -50,9 +50,9 @@ export default function CreateDog(){
     const [errors, setErrors] = useState({});
     const [input, setInput] = useState({
         name: "",
-        weight: "",
-        height: "",
-        life_span:"",
+        weight: "1",
+        height: "1",
+        life_span: "1",
         temperament: [],
         image: ""
     })
@@ -116,9 +116,9 @@ export default function CreateDog(){
         alert("Perreque :)");
         setInput({
             name: "",
-            weight: "",
-            height: "",
-            life_span:"",
+            weight: "1",
+            height: "1",
+            life_span: "1",
             temperament: [],
             image: ""
         })
@@ -147,21 +147,21 @@ export default function CreateDog(){
                     </div>
                     <div>
                         <label>Peso:</label>
-                        <input type="range" value={input.weight} min="3" max="50" placeholder="3" name="weight" required onChange={e => {handleRangeWeight(e)}}/>
+                        <input type="range" value={input.weight} min="1" max="50" placeholder="3" name="weight" required onChange={e => {handleRangeWeight(e)}}/>
                         {errors.weight && ( <p>{errors.weight}</p>)}
-                        <span>{input.weight}</span>
+                        <span>{input.weight}kg</span>
                     </div>
                     <div>
                         <label>Altura:</label>
-                        <input type="range" value={input.height} min="50" max="150" placeholder="50" name="height" required onChange={e => {handleRangeHeight(e)}}/>
+                        <input type="range" value={input.height} min="1" max="150" placeholder="50" name="height" required onChange={e => {handleRangeHeight(e)}}/>
                         {errors.height && ( <p>{errors.height}</p>)}
-                        <span>{input.height}</span>
+                        <span>{input.height}cm</span>
                     </div>
                     <div>
                         <label>Años de vida:</label>
-                        <input type="range" value={input.life_span} min="6" max="20" placeholder="6" name="life_span" required onChange={e => {handleRangeLifespan(e)}}/>
+                        <input type="range" value={input.life_span} min="1" max="20" placeholder="6" name="life_span" required onChange={e => {handleRangeLifespan(e)}}/>
                         {errors.life_span && ( <p>{errors.life_span}</p>)}
-                        <span>{input.life_span}</span>
+                        <span>{input.life_span} años</span>
                     </div>
                     <div>
                         <label>Imagen:</label>

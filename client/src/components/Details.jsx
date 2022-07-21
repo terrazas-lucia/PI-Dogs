@@ -20,9 +20,9 @@ export default function Detail(props){
                 <h1>{myDog.name}</h1>
                 <img src={myDog.image} alt="dog"/>
                 <h4>Nombre: {myDog.name}</h4>
-                <h4>Peso: {myDog.weight}</h4>
-                <h4>Altura: {myDog.height}</h4> 
-                <h4>Años de vida: {myDog.life_span}</h4>
+                <h4>Peso: {myDog.weight.replace('NaN', 'X')}kg</h4>
+                <h4>Altura: {myDog.height}cm</h4> 
+                <h4>Años de vida: {myDog.life_span.replace('years', 'años')}</h4>
                 <h4>Temperamento: {myDog.temperament}</h4>
 
             </div> : <p> loading :3 </p>} 

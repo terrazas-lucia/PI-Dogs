@@ -1,17 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Elsie+Swash+Caps:wght@900&display=swap');
+
+
 .homepage{
     background-image: url('https://i.imgur.com/pVerVxJ.jpg');
     background-size: 30%;
 }
 
 .homepage h1{
-    padding: 10px;
     cursor: pointer;
+    font-family: 'Elsie Swash Caps', cursive;
+    font-size: 50px;
+    color: #5c3d22;
+    text-shadow: 2px 2px 5px #4d321c;
 }
 
 .homepage-navbar{
-    background-color:#fefaef;
-    display: inline-flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.homepage-navbar h4{
+    margin-top: 30px;
+}
+
+.homepage-selects{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.homepage-selects select{
+    padding: 7px 20px 7px 12px;
+    border: 1px solid #E8EAED;
+    border-radius: 5px;
+    box-shadow: #cd9a6e 1px 3px 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+ul li{
+    list-style-type: none;
+}
+
+.homepage button{
+      background-color:#cd9a6e;
+      border: 0;
+      border-radius: 20px;
+      color: #FFFFFF;
+      cursor: pointer;
+      font-size: 16px;
+      outline: transparent;
+      margin: 5px;
+      text-align: center;
+      padding: 8px;
 }
