@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Elsie+Swash+Caps:wght@900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=Elsie+Swash+Caps:wght@900&display=swap');
 
 .homepage{
     background-image: url('https://i.imgur.com/pVerVxJ.jpg');
@@ -22,6 +21,8 @@
 
 .homepage-navbar h4{
     margin-top: 30px;
+    font-family: 'Alata', sans-serif;
+    color: #5c3d22;
 }
 
 .homepage-selects{
@@ -38,6 +39,7 @@
     cursor: pointer;
     font-size: 16px;
     text-decoration: none;
+    font-family: 'Alata', sans-serif;
     margin-top: 10px;
     margin-left: 10px;
 }
@@ -48,6 +50,7 @@ ul li{
 
 .homepage button{
       background-color:#cd9a6e;
+      font-family: 'Alata', sans-serif;
       border: 0;
       border-radius: 20px;
       color: #FFFFFF;
@@ -56,5 +59,5 @@ ul li{
       outline: transparent;
       margin: 5px;
       text-align: center;
-      padding: 8px;
+      padding: 1%;
 }

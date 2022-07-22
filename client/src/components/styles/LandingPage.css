@@ -20,9 +20,20 @@ body{
     transform: translate(-50%, -50%);
 }
 
+.landing-page h3{
+    color: white;
+    text-shadow: 2px 2px 5px #5c3d22;
+    font-family: 'Elsie Swash Caps', cursive;
+    font-size: 20px;
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .landing-page button{
     position: absolute;
-    top: 30%;
+    top: 38%;
     left: 50%;
     transform: translate(-50%, -50%);
 }

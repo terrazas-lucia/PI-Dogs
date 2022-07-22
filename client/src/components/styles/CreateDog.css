@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=Elsie+Swash+Caps:wght@900&display=swap');@import url('https://fonts.googleapis.com/css2?family=Alata&family=Elsie+Swash+Caps:wght@900&display=swap');
+
+.createdog_page{
+    background-image: url('https://i.imgur.com/pVerVxJ.jpg');
+    background-size: 30%;
+    padding: 2%;
+}
+
+.createdog_page h1{
+    font-family: 'Elsie Swash Caps', cursive;
+    text-shadow: 2px 2px 5px #4d321c;
+    font-size: 50px;
+    color: #5c3d22;
+    padding: 1%;
+}
+.createdog_page_component{
+    padding: 1%;
+    border-radius: 15px;  
+    background-color: #fbf2ea;
+    box-shadow: 8px 5px 10px #cd9a6e;
+    font-family: 'Alata', sans-serif;
+    width: 50%;
+    margin-left: 23%;
+}
+
+.createdog_page_component input{
+    width:50%;
+    padding: 5px;
+    margin: 10px;
+    background:none;
+    font-family: 'Alata', sans-serif;
+    outline:none;
+    border:0;
+    border-bottom: 1px solid #5c3d22;
+}
+
+.createdog_page_component label{
+    margin-top: 2px;
+    color: #5c3d22;
+    text-decoration: none;
+    font-family: 'Alata', sans-serif;
+}
+
+.createdog_page_component select{
+    margin: 20px;
+    padding: 7px 40px 7px 12px;
+    font-family: 'Alata', sans-serif;
+    border: 0;
+    border-radius: 5px;
+    box-shadow: #5c3d22 1px 3px 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+
+.createdog_page button{
+    font-family: 'Alata', sans-serif;
+    margin-left: 23%;
+    background-color:#cd9a6e;
+    border: 0;
+    border-radius: 20px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 16px;
+    outline: transparent;
+    text-align: center;
+    text-decoration: none !important;
+    margin: 1%;
+    padding: 8px;
+}

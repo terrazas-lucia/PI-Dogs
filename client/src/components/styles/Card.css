@@ -1,6 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
-
-* { box-sizing: border-box; }
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=Elsie+Swash+Caps:wght@900&display=swap');
 
 .card-box{
     display: inline-block;
@@ -12,14 +10,16 @@
     box-shadow: 8px 5px 10px #cd9a6e;
 }
 
-
-.card-box h3{
+.card-box h3, h5{
     text-decoration: none;
+    font-family: 'Alata', sans-serif;
     color: #5c3d22;
     cursor: pointer;
+    text-decoration: none !important;
 }
 
 .card-box img{
     max-height: 200px;
     max-width: 200px;
+    border-radius: 7%;  
 }

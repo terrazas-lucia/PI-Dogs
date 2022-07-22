@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=Elsie+Swash+Caps:wght@900&display=swap');
+
+.details_page{
+    background-image: url('https://i.imgur.com/pVerVxJ.jpg');
+    background-size: 30%;
+    padding: 2%;
+}
+
+.details_page_component{
+    padding: 1%;
+    border-radius: 15px;  
+    background-color: #fbf2ea;
+    box-shadow: 8px 5px 10px #cd9a6e;
+    width: 50%;
+    margin-left: 23%;
+}
+
+.details_page_component h1{
+    text-decoration: none;
+    font-family: 'Elsie Swash Caps', cursive;
+    color: #5c3d22;
+}
+
+.details_page_component h4{
+    font-family: 'Alata', sans-serif;
+    color: #5c3d22;
+}
+
+.details_page_component img{
+    max-height: 200px;
+    max-width: 200px;
+    border-radius: 7%;
+}
+
+.details_page button{
+    font-family: 'Alata', sans-serif;
+    margin-left: 23%;
+    background-color:#cd9a6e;
+    border: 0;
+    border-radius: 20px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 16px;
+    outline: transparent;
+    text-align: center;
+    text-decoration: none !important;
+    margin: 1%;
+    padding: 8px;
+}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { postDog, getTemperament } from '../actions/actions';
 import { useDispatch, useSelector } from 'react-redux';
+import './styles/CreateDog.css'
  /* eslint-disable */
 
 function validate(input){
@@ -136,9 +137,9 @@ export default function CreateDog(){
     }, [dispatch]);
 
     return(
-        <div>
+        <div className='createdog_page'>
             <h1>Ingresa una nueva raza!</h1>
-            <div>
+            <div className='createdog_page_component'>
                 <form onSubmit={e => handleSubmit(e)}>
                     <div>
                         <label>Nombre:</label>

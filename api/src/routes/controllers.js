@@ -18,8 +18,17 @@ const getApiInfo = async() =>{
     return apiInfo;
 }
 
+const parseTemperaments = (temps) => {
+    let str = "" ;
+    for (let i = 0; i < temps.length; i++) {
+        str += temps[i].name + ", " 
+    }
+    str = str.substring(0, str.length - 2);
+    return str
+}
+
 const getDbInfo = async() => {
-    return await Dog.findAll({
+    const dBDogs = await Dog.findAll({
         include:[{
             model: Temperament,
             attributes: ['name'],
@@ -28,7 +37,21 @@ const getDbInfo = async() => {
             },
         }]
     });
+    arrayDogs = JSON.parse(JSON.stringify(dBDogs))
+    parsedDogs = arrayDogs.map(el => {
+        return {
+            id: el.id,
+            name: el.name,
+            weight: el.weight.toString(),
+            height: el.height.toString(),
+            life_span: el.life_span.toString(),
+            temperament: parseTemperaments(el.temperaments),
+            image: el.image,
+        }
+    })
+    return parsedDogs;
 }
+
 
 const getAllDogs = async () => {
     const apiInfo = await getApiInfo();

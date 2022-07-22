@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearDogs, getDetail } from '../actions/actions';
+import { getDetail } from '../actions/actions';
 import { useEffect } from 'react';
+import './styles/Details.css';
 
 export default function Detail(props){
     const dispatch = useDispatch()
@@ -10,22 +11,20 @@ export default function Detail(props){
 
     useEffect(() => {
         dispatch(getDetail(props.match.params.id));
-        return() => dispatch(clearDogs());
     }, [dispatch, props.match.params.id]);
 
     return(
-        <div>
+        <div className='details_page'>
             {myDog.hasOwnProperty("id") ? 
-            <div>
+            <div className='details_page_component'>
                 <h1>{myDog.name}</h1>
                 <img src={myDog.image} alt="dog"/>
                 <h4>Nombre: {myDog.name}</h4>
-                <h4>Peso: {myDog.weight.replace('NaN', 'X')}kg</h4>
+                <h4>Peso: {myDog.weight}kg</h4>
                 <h4>Altura: {myDog.height}cm</h4> 
-                <h4>Años de vida: {myDog.life_span.replace('years', 'años')}</h4>
+                <h4>Años de vida: {myDog.life_span}</h4>
                 <h4>Temperamento: {myDog.temperament}</h4>
-
-            </div> : <p> loading :3 </p>} 
+            </div> : <p> Cargando, tenga paciencia ૮꒰ ˶• ༝ •˶꒱ა ♡ </p>} 
             <Link to="/home"> <button>Volver a la página principal</button></Link>
         </div> 
     )
