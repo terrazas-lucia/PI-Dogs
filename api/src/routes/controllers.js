@@ -41,6 +41,7 @@ const getDbInfo = async() => {
     parsedDogs = arrayDogs.map(el => {
         return {
             id: el.id,
+            createdInDb: el.createdInDb,
             name: el.name,
             weight: el.weight.toString(),
             height: el.height.toString(),

@@ -3,7 +3,6 @@ import axios from 'axios';
 export function getDogs(){
     return async function(dispatch){
         var json = await axios.get("http://localhost:3001/dogs",{});
-        console.log(json.data)
         return dispatch({
             type: 'GET_DOGS',
             payload: json.data
@@ -43,7 +42,6 @@ export function getNameDogs(payload){
     return async function(dispatch){
       try {
           var json = await axios.get("http://localhost:3001/dogs?name=" + payload);
-          console.log(json.data)
           if(!json.data.length){
             dispatch({
                 type: 'GET_ERROR',

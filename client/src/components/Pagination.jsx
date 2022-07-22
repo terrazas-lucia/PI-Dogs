@@ -2,7 +2,12 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 export default function Pagination({ nPages, currentPage, setCurrentPage }){
-    const pageNumbers = [...Array(nPages + 1).keys()].slice(1); 
+    let pagina = currentPage;
+    if(currentPage < 3){
+       pagina = 3;
+    }
+
+    const pageNumbers = [...Array(nPages + 1).keys()].slice(pagina-2, pagina+3); 
     const error = useSelector((state) => state.error);
 
     const nextPage = () => {
@@ -10,7 +15,7 @@ export default function Pagination({ nPages, currentPage, setCurrentPage }){
     }
 
     const prevPage = () => {
-        if(currentPage !== 1) setCurrentPage (currentPage - 1)
+        if(currentPage !== 1) setCurrentPage(currentPage - 1)
     }
 
     return(

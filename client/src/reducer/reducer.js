@@ -90,11 +90,6 @@ function rootReducer(state= initialState, action){
                 detail: action.payload,
                 error: ""
             }
-        case 'CLEAR_DETAILS':
-            return{
-                ...state,
-                detail: action.payload
-            }
         case "POST_DOG":
             return{
                 ...state,
