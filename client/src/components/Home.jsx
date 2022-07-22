@@ -99,13 +99,17 @@ export default function Home(){
                     </div></li>
                 </ul>
             </nav>
+            <div className='homepage_card'>
             {  error?.length ? <p> {error} </p> : 
             currentDog?.map((el, i) => { //se trae el estado global y pregunta si existe y lo mapea y se lo pasa a la card
                 return(
                     <Card key={i} id={el.id} name={el.name} weight={el.weight} temperament={el.temperament} image={el.image}/>
                 )
             })}
+            </div>
+            <div className='homepage_pagination'>
             <Pagination dogsPerPage={ dogsPerPage } allDogs={ allDogs.length } pagination={ pagination }/>
+            </div>
         </div>
     )
 }

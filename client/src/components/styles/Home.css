@@ -48,6 +48,12 @@ ul li{
     list-style-type: none;
 }
 
+.homepage_card{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
 .homepage button{
       background-color:#cd9a6e;
       font-family: 'Alata', sans-serif;
