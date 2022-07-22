@@ -14,11 +14,11 @@ function validate(input){
         if(!input.name.match(/^[a-zA-Z]+$/)){
             errors.name = 'No se permiten caracteres especiales, solo letras.';
         }
-    }
+    } 
 
     if(!input.weight){
         errors.weight = 'Se requiere peso.'
-    }
+    } 
 
     if (!input.height){
         errors.height = 'Se requiere altura.';
@@ -51,9 +51,9 @@ export default function CreateDog(){
     const [errors, setErrors] = useState({});
     const [input, setInput] = useState({
         name: "",
-        weight: "1",
-        height: "1",
-        life_span: "1",
+        weight: "",
+        height: "",
+        life_span: "",
         temperament: [],
         image: ""
     })
@@ -114,12 +114,12 @@ export default function CreateDog(){
         } 
 
         dispatch(postDog(input));
-        alert("Perreque :)");
+        alert("Raza creada con exito :)");
         setInput({
             name: "",
-            weight: "1",
-            height: "1",
-            life_span: "1",
+            weight: "",
+            height: "",
+            life_span: "",
             temperament: [],
             image: ""
         })
