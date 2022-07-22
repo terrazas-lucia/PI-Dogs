@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 export default function Pagination({ nPages, currentPage, setCurrentPage }){
-    const pageNumbers = [...Array(nPages + 1).keys()].slice(1, 10); 
+    const pageNumbers = [...Array(nPages + 1).keys()].slice(1); 
     const error = useSelector((state) => state.error);
 
     const nextPage = () => {
