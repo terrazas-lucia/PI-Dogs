@@ -14,15 +14,14 @@ export default function Home(){
     const allDogs = useSelector((state) => state.dogs);
     const temperament = useSelector ((state) => state.temperament);
     const [currentPage, setCurrentPage] = useState(1);
-    const dogsPerPage = 8;
+    const [dogsPerPage] = useState(8);
     const indexOfLastDog= currentPage * dogsPerPage;
     const indexOfFirstDog = indexOfLastDog - dogsPerPage; 
     const currentDog = allDogs.slice(indexOfFirstDog, indexOfLastDog);
+    const nPages = Math.ceil(allDogs.length / dogsPerPage);
     const error = useSelector((state) => state.error);
 
-    const pagination = (pageNumber) => {
-        setCurrentPage(pageNumber);
-    }
+    
 
     useEffect(() => {
         dispatch(getDogs()); //lo mismo que hacer mapdispatchtoprops 
@@ -92,7 +91,7 @@ export default function Home(){
                             <select onChange={e => handleFilterTemperament(e)}>
                             <option defaultValue="selected" hidden="hidden">Filtrar por temperamento</option>
                                 {temperament.map((el)=>(
-                                <option value={el}>{el}</option>
+                                <option key={el} value={el}>{el}</option>
                             ))}  
                             </select>
                         </div>
@@ -108,7 +107,7 @@ export default function Home(){
             })}
             </div>
             <div className='homepage_pagination'>
-            <Pagination dogsPerPage={ dogsPerPage } allDogs={ allDogs.length } pagination={ pagination }/>
+            <Pagination nPages = {nPages} currentPage = {currentPage} setCurrentPage = {setCurrentPage}/>
             </div>
         </div>
     )

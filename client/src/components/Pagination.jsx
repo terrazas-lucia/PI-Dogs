@@ -1,22 +1,28 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-export default function Pagination({ dogsPerPage, allDogs, pagination }){
-    const pageNumbers = []; 
+export default function Pagination({ nPages, currentPage, setCurrentPage }){
+    const pageNumbers = [...Array(nPages + 1).keys()].slice(1, 10); 
     const error = useSelector((state) => state.error);
 
-    for( let i=1; i <= Math.ceil(allDogs/dogsPerPage); i++){
-        pageNumbers.push(i); 
+    const nextPage = () => {
+        if(currentPage !== nPages) setCurrentPage(currentPage + 1)
+    }
+
+    const prevPage = () => {
+        if(currentPage !== 1) setCurrentPage (currentPage - 1)
     }
 
     return(
         <> {error?.length ? null : 
         <nav>
             <ul>
-                { pageNumbers && pageNumbers.map((number, i) => {
+                <button onClick={prevPage}> ⬅ </button>
+                { pageNumbers.map(pgNumber => {
                     return(
-                    <button key={i} onClick={() => pagination(number)}>{number}</button>
+                    <button key={pgNumber} onClick={() => setCurrentPage(pgNumber)}>{pgNumber}</button>
                 )})}
+                <button onClick={nextPage}> ⮕ </button> 
             </ul>
         </nav>}
         </>

@@ -34,11 +34,28 @@
     border-bottom: 1px solid #5c3d22;
 }
 
+.createdog_page_component input[type='range']{
+    width: 40%;
+    background: #4d321c;
+    cursor: pointer;
+    height: 0;
+}
 .createdog_page_component label{
     margin-top: 2px;
     color: #5c3d22;
     text-decoration: none;
     font-family: 'Alata', sans-serif;
+}
+
+.createdog_page_component p{
+    font-family: 'Alata', sans-serif;
+    border: 1px solid rgba(241, 6, 6, 0.81);
+    border-radius: 20px;
+    box-shadow: 0px 0px 2px #f50000;
+    color: #d80000;
+    padding: 5px;
+    width: 40%;
+    margin-left: 190px;
 }
 
 .createdog_page_component select{

@@ -149,20 +149,23 @@ export default function CreateDog(){
                     <div>
                         <label>Peso:</label>
                         <input type="range" value={input.weight} min="1" max="50" placeholder="3" name="weight" required onChange={e => {handleRangeWeight(e)}}/>
-                        {errors.weight && ( <p>{errors.weight}</p>)}
                         <span>{input.weight}kg</span>
+                        {errors.weight && ( <p>{errors.weight}</p>)}
+                        
                     </div>
                     <div>
                         <label>Altura:</label>
                         <input type="range" value={input.height} min="1" max="150" placeholder="50" name="height" required onChange={e => {handleRangeHeight(e)}}/>
-                        {errors.height && ( <p>{errors.height}</p>)}
                         <span>{input.height}cm</span>
+                        {errors.height && ( <p>{errors.height}</p>)}
+                        
                     </div>
                     <div>
                         <label>Años de vida:</label>
                         <input type="range" value={input.life_span} min="1" max="20" placeholder="6" name="life_span" required onChange={e => {handleRangeLifespan(e)}}/>
-                        {errors.life_span && ( <p>{errors.life_span}</p>)}
                         <span>{input.life_span} años</span>
+                        {errors.life_span && ( <p>{errors.life_span}</p>)}
+                        
                     </div>
                     <div>
                         <label>Imagen:</label>
